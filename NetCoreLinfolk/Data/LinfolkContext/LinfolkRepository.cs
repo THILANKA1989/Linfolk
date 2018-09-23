@@ -22,7 +22,7 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         
         public IEnumerable<Book> GetBooksByCategory(string category)
         {
-            return _ctx.Books.Where(b => b.Category.CategoryName.Contains(category)).ToList();
+            return _ctx.Books.Where(b => b.SubCategory.SubCategoryName.Contains(category)).ToList();
         }
 
         public bool SaveAll()

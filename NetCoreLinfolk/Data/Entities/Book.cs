@@ -16,7 +16,7 @@ namespace NetCoreLinfolk.Data.Entities
         public Boolean IsPublished { get; set; }
         public int CategoryId { get; set; }
         
-        public Category Category { get;set; }
+        public SubCategory SubCategory { get;set; }
         public Author Author { get; set; }
 
         public ICollection<Chapter> Chapters { get; set; }

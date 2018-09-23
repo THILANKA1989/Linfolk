@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 
 namespace NetCoreLinfolk.Data.Entities
 {
-    public class Category
+    public class SubCategory
     {
         public int Id { get; set; }
-        public string CategoryName { get; set; }
+        public string SubCategoryName { get; set; }
+        public int CategoryId { get; set; }
         public string Description { get; set; }
         public Boolean IsEnabled { get; set; }
-        public ICollection<SubCategory> SubCategories { get; set; }
+
+        public Category Category { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }

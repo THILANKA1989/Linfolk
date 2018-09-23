@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetCoreLinfolk.Data.LinfolkContext;
 
 namespace NetCoreLinfolk.Migrations
 {
     [DbContext(typeof(LinfolkContext))]
-    [Migration("20180919060625_InitialMigrations")]
-    partial class InitialMigrations
+    partial class LinfolkContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,15 +64,17 @@ namespace NetCoreLinfolk.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
+                    b.Property<int?>("SubCategoryId");
+
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("CityId");
+
+                    b.HasIndex("SubCategoryId");
 
                     b.ToTable("Books");
                 });
@@ -176,6 +176,27 @@ namespace NetCoreLinfolk.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("NetCoreLinfolk.Data.Entities.SubCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsEnabled");
+
+                    b.Property<string>("SubCategoryName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("SubCategories");
+                });
+
             modelBuilder.Entity("NetCoreLinfolk.Data.Entities.Author", b =>
                 {
                     b.HasOne("NetCoreLinfolk.Data.Entities.City", "City")
@@ -186,19 +207,18 @@ namespace NetCoreLinfolk.Migrations
 
             modelBuilder.Entity("NetCoreLinfolk.Data.Entities.Book", b =>
                 {
-                    b.HasOne("NetCoreLinfolk.Data.Entities.Author")
+                    b.HasOne("NetCoreLinfolk.Data.Entities.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("NetCoreLinfolk.Data.Entities.Category", "Category")
-                        .WithMany("Books")
-                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("NetCoreLinfolk.Data.Entities.City")
                         .WithMany("Books")
                         .HasForeignKey("CityId");
+
+                    b.HasOne("NetCoreLinfolk.Data.Entities.SubCategory", "SubCategory")
+                        .WithMany("Books")
+                        .HasForeignKey("SubCategoryId");
                 });
 
             modelBuilder.Entity("NetCoreLinfolk.Data.Entities.BookCover", b =>
@@ -222,6 +242,14 @@ namespace NetCoreLinfolk.Migrations
                     b.HasOne("NetCoreLinfolk.Data.Entities.Country", "Country")
                         .WithMany("Cities")
                         .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("NetCoreLinfolk.Data.Entities.SubCategory", b =>
+                {
+                    b.HasOne("NetCoreLinfolk.Data.Entities.Category", "Category")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -19,6 +19,7 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         public DbSet<Book> Books { get; set; }
         public DbSet<BookCover> BookCovers { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
