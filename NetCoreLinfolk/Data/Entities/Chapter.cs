@@ -14,7 +14,6 @@ namespace NetCoreLinfolk.Data.Entities
         public DateTime ModifiedDate { get; set; }
         public int ModifiedBy { get; set; }
         public Boolean IsEnabled { get; set; }
-
         public Book Book { get; set; }
     }
 }
