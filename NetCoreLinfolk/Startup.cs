@@ -59,7 +59,7 @@ namespace NetCoreLinfolk
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var seeder = scope.ServiceProvider.GetService<LinfolkSeeder>();
-                    seeder.Seed();
+                    //seeder.Seed();
                 }
             }
         }
