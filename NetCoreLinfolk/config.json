@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "LinfolkConnectionString": "server=(localdb)\\ProjectsV13;Database=Linfolk;Integrated Security=true;MultipleActiveResultSets=true;"
+  }
+}

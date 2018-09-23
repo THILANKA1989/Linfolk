@@ -1,0 +1,41 @@
+﻿@model ContactView
+@{
+    ViewBag.Title = "Contact Us";
+}
+<h2 class="text-center">Contact</h2>
+@section scripts{
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="row">
+    <div class="medium-dynamic-box centered-block padset-md background-lightgrey border-grey-solid">
+        <div class="col-md-12 padset">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <p><label asp-for="Name">Your Name: </label></p>
+                    <input asp-for="Name"  class="full-width padset-form"/><br />
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <p><label asp-for="Email">Email: </label></p>
+                    <input asp-for="Email" class="full-width padset-form" /><br />
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <p><label>Subject: </label></p>
+                    <input asp-for="Subject"  class="full-width padset-form"/><br />
+                    <span asp-validation-for="Subject"></span>
+                </div>
+                <div class="form-group">
+                    <p><label asp-for="Message">Message: </label></p>
+                    <textarea asp-for="Message" class="full-width padset-form"></textarea><br />
+                    <span asp-validation-for="Message"></span>
+                </div>
+                <input type="submit" value="Send Message" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div style="height: 1000px"></div>
