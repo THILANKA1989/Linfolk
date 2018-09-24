@@ -60,7 +60,7 @@ using NetCoreLinfolk.ModelViews;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(45, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "994e20acc249491095090c6cbda3aa89", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b865866d3184ac897a4b3f82552fcf1", async() => {
                 BeginContext(51, 13, true);
                 WriteLiteral("\r\n    <title>");
                 EndContext();
@@ -75,7 +75,7 @@ using NetCoreLinfolk.ModelViews;
                 WriteLiteral("</title>\r\n    ");
                 EndContext();
                 BeginContext(92, 46, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1e8d8f0a63f943d1b5035de17665abf7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3ae28be5ad7f430f8ae294ebe4ac5588", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
