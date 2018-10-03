@@ -5,24 +5,61 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using NetCoreLinfolk.Data.Entities;
 using NetCoreLinfolk.Data.LinfolkContext;
 
 namespace NetCoreLinfolk.Controllers
 {
+    [Route("api/[Controller]")]
     public class CategoriesController : Controller
     {
         private readonly LinfolkContext _context;
+        private readonly ILinfolkRepository _repository;
+        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(LinfolkContext context)
+        public CategoriesController(LinfolkContext context, ILinfolkRepository repository, ILogger<CategoriesController> logger)
         {
             _context = context;
+            _repository = repository;
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(_repository.GetCategories());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get category: {ex}");
+                return BadRequest("Failed to get category");
+            }
+        }
+
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                var category = _repository.GetCategoryById(id);
+                if (category != null) return Ok(category);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get category: {ex}");
+                return BadRequest("Failed to get category");
+            }
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            var categories = _repository.GetCategories();
+            return View(categories);
         }
 
         // GET: Categories/Details/5

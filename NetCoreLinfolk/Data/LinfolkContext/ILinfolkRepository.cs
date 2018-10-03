@@ -8,8 +8,12 @@ namespace NetCoreLinfolk.Data.LinfolkContext
 {
     public interface ILinfolkRepository
     {
+        //categories
+        IEnumerable<Category> GetCategories();
         IEnumerable<Book> GetAllBooks();
         IEnumerable<Book> GetBooksByCategory(string category);
+        IEnumerable<SubCategory> GetAllSubCategories();
         bool SaveAll();
+        Category GetCategoryById(int id);
     }
 }

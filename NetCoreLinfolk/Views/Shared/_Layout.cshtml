@@ -18,14 +18,11 @@
       <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
     <![endif]-->
-
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-
 </head>
 <body>
     <!-- header section -->
     <header>
-
         <!-- navbar bottom -->
         <nav class="navbar navbar-default navbar-default2 navbar-fixed-top" id="navbarbottom" role="navigation">
             <div class="navbar-header">
@@ -35,24 +32,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.htmp"><img src="~/Images/logo.png" height="50px" /></a>
                 <!--  <a class="navbar-brand" href="index.php"></a> -->
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
-                <span class="fonts-xl logo-fonts"> LinFolk</span>
+                <span class="logo-fonts"> LinFolk</span>
                 <ul class="nav navbar-nav pull-right" id="bottomlist">
                     <li id="inactive"><a asp-controller="App" asp-action="Index" class="active">Home</a></li>
                     <li id="inactive">
-                        <a asp-controller="Category" asp-action="Index">Categories</a>
-                        <ul id="subcat" style="display: none;">
-                            <li>
-                                Sub Category one
-
-                            </li>
-                            <li>Sub Category two</li>
-                            <li>Sub Category three</li>
-                            <li>Sub Category four</li>
+                        <a asp-controller="Categories" asp-action="Index">Categories</a>
+                        <ul id="subcat">
+                            @*@foreach (var c in Model)
+                            {
+                                <li>
+                                    @c.CategoryName
+                                </li>
+                            }*@
                         </ul>
                     </li>
                     <li id="inactive"><a asp-controller="App" asp-action="Project">Projects</a></li>
@@ -62,7 +57,6 @@
                 </ul>
             </div>
         </nav>
-
     </header>
     <!-- header section -->
     <!-- cover section -->
@@ -75,14 +69,14 @@
     <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/Scripts/application.js"></script>
     <script type="text/javascript">
-$(document).ready(function(){
-  numberMenus = parseFloat($('#toplist').children().length);
+        $(document).ready(function () {
+            numberMenus = parseFloat($('#toplist').children().length);
 
-  menuWidth = parseFloat($('#toplist').innerWidth())/numberMenus;
-    console.log(menuWidth);
-  $('#toplist').children().css({'width': menuWidth-3+'px'});
-});
+            menuWidth = parseFloat($('#toplist').innerWidth()) / numberMenus;
+            console.log(menuWidth);
+            $('#toplist').children().css({ 'width': menuWidth - 3 + 'px' });
+        });
     </script>
-    @RenderSection("Scripts" , false)
+    @RenderSection("Scripts", false)
 </body>
 </html>

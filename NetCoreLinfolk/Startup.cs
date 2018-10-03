@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using NetCoreLinfolk.Data.LinfolkContext;
 using NetCoreLinfolk.Services;
+using Newtonsoft.Json;
 
 namespace NetCoreLinfolk
 {
@@ -35,7 +36,7 @@ namespace NetCoreLinfolk
             services.AddTransient<IMailService, NullMailService>();
             services.AddTransient<LinfolkSeeder>();
             services.AddScoped<ILinfolkRepository, LinfolkRepository>();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

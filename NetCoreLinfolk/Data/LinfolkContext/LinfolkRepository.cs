@@ -1,4 +1,6 @@
-﻿using NetCoreLinfolk.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NetCoreLinfolk.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,17 @@ namespace NetCoreLinfolk.Data.LinfolkContext
     public class LinfolkRepository : ILinfolkRepository
     {
         private readonly LinfolkContext _ctx;
+        private readonly ILogger<LinfolkRepository> _logger;
 
-        public LinfolkRepository(LinfolkContext ctx)
+        public LinfolkRepository(LinfolkContext ctx, ILogger<LinfolkRepository> logger)
         {
             _ctx = ctx;
+            _logger = logger;
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+            return _ctx.Categories.Include(o => o.SubCategories).OrderBy(b => b.CategoryName).ToList();
         }
 
         public IEnumerable<Book> GetAllBooks()
@@ -28,6 +37,16 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         public bool SaveAll()
         {
             return _ctx.SaveChanges() > 0;
+        }
+
+        public IEnumerable<SubCategory> GetAllSubCategories()
+        {
+            return _ctx.SubCategories.OrderBy(s => s.Description).ToList();
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            return _ctx.Categories.Include(o => o.SubCategories).Where(a => a.Id == id).FirstOrDefault();
         }
     }
 }

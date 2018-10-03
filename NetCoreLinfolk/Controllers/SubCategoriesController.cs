@@ -5,20 +5,38 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using NetCoreLinfolk.Data.Entities;
 using NetCoreLinfolk.Data.LinfolkContext;
 
 namespace NetCoreLinfolk.Controllers
 {
+    [Route("api/[Controller]")]
     public class SubCategoriesController : Controller
     {
         private readonly LinfolkContext _context;
+        private readonly ILinfolkRepository _repository;
+        private readonly ILogger<SubCategoriesController> _logger;
 
-        public SubCategoriesController(LinfolkContext context)
+        public SubCategoriesController(LinfolkContext context, ILinfolkRepository repository, ILogger<SubCategoriesController> logger)
         {
             _context = context;
+            _repository = repository;
+            _logger = logger;
         }
-
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(_repository.GetAllSubCategories());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get subcategories: {ex}");
+                return BadRequest("Failed to get subcategories");
+            }
+        }
         // GET: SubCategories
         public async Task<IActionResult> Index()
         {
