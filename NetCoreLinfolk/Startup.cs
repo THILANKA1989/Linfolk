@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using NetCoreLinfolk.Data.Entities;
 using NetCoreLinfolk.Data.LinfolkContext;
 using NetCoreLinfolk.Services;
 using Newtonsoft.Json;
@@ -29,10 +32,14 @@ namespace NetCoreLinfolk
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<LinfolkUser, IdentityRole>(cfg => {
+                cfg.User.RequireUniqueEmail = true;
+            });
             services.AddDbContext<LinfolkContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("LinfolkConnectionString"));
             });
+            services.AddAutoMapper();
             services.AddTransient<IMailService, NullMailService>();
             services.AddTransient<LinfolkSeeder>();
             services.AddScoped<ILinfolkRepository, LinfolkRepository>();

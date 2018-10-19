@@ -15,6 +15,7 @@ namespace NetCoreLinfolk.Data.Entities
         public int CityId { get; set; }
         public string Street { get; set; }
         public City City { get; set; }
+        public LinfolkUser User { get; set; }
 
         public ICollection<Book> Books { get; set; } 
     }

@@ -2,34 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NetCoreLinfolk.Data.Entities;
 using NetCoreLinfolk.Data.LinfolkContext;
+using NetCoreLinfolk.ViewModels;
 
 namespace NetCoreLinfolk.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/categories/{id}/subcategories")]
     public class SubCategoriesController : Controller
     {
         private readonly LinfolkContext _context;
         private readonly ILinfolkRepository _repository;
         private readonly ILogger<SubCategoriesController> _logger;
+        private readonly IMapper _mapper;
 
-        public SubCategoriesController(LinfolkContext context, ILinfolkRepository repository, ILogger<SubCategoriesController> logger)
+        public SubCategoriesController(LinfolkContext context, ILinfolkRepository repository, ILogger<SubCategoriesController> logger, IMapper mapper)
         {
             _context = context;
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int id)
         {
             try
             {
-                return Ok(_repository.GetAllSubCategories());
+                var category = _repository.GetCategoryById(id);
+                if (category != null) return Ok(_mapper.Map<IEnumerable<SubCategory>,IEnumerable<SubCategoryViewModel>>(category.SubCategories));
+                return NotFound();
             }
             catch (Exception ex)
             {

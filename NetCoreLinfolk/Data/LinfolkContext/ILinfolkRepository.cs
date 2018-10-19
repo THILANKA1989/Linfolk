@@ -15,5 +15,6 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         IEnumerable<SubCategory> GetAllSubCategories();
         bool SaveAll();
         Category GetCategoryById(int id);
+        void AddEntity(object model);
     }
 }

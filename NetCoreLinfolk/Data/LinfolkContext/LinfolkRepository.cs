@@ -48,5 +48,10 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         {
             return _ctx.Categories.Include(o => o.SubCategories).Where(a => a.Id == id).FirstOrDefault();
         }
+
+        public void AddEntity(object model)
+        {
+            _ctx.Add(model);
+        }
     }
 }

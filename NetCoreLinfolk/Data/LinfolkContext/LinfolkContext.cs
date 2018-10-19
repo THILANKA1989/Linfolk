@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NetCoreLinfolk.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NetCoreLinfolk.Data.LinfolkContext
 {
-    public class LinfolkContext : DbContext
+    public class LinfolkContext : IdentityDbContext<LinfolkUser>
     {
 
         public LinfolkContext(DbContextOptions<LinfolkContext> options ): base(options)
