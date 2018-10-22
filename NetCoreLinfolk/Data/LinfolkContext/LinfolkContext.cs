@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace NetCoreLinfolk.Data.LinfolkContext
 {
-    public class LinfolkContext : IdentityDbContext<LinfolkUser>
+    public class LinfolkContext : IdentityDbContext<Author>
     {
 
         public LinfolkContext(DbContextOptions<LinfolkContext> options ): base(options)
         {
-
+            
         }
 
         public DbSet<Author> Authors { get; set; }

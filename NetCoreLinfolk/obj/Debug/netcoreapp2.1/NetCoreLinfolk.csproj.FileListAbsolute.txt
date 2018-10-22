@@ -56,11 +56,6 @@ L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Ci
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Cities\Details.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Cities\Edit.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Cities\Index.g.cshtml.cs
-L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Countries\Create.g.cshtml.cs
-L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Countries\Delete.g.cshtml.cs
-L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Countries\Details.g.cshtml.cs
-L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Countries\Edit.g.cshtml.cs
-L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Countries\Index.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\SubCategories\Create.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\SubCategories\Delete.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\SubCategories\Details.g.cshtml.cs

@@ -8,8 +8,8 @@ namespace NetCoreLinfolk.Data.Entities
     public class Country
     {
         public int Id { get; set; }
-        public string country_name { get; set; }
-        public Boolean is_enabled { get; set; }
+        public string CountryName { get; set; }
+        public Boolean IsEnabled { get; set; }
 
         public ICollection<City> Cities { get; set; } 
     }

@@ -32,9 +32,9 @@ namespace NetCoreLinfolk
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentity<LinfolkUser, IdentityRole>(cfg => {
+            services.AddIdentity<Author, IdentityRole>(cfg => {
                 cfg.User.RequireUniqueEmail = true;
-            });
+            }).AddEntityFrameworkStores<LinfolkContext>();
             services.AddDbContext<LinfolkContext>(cfg =>
             {
                 cfg.UseSqlServer(_config.GetConnectionString("LinfolkConnectionString"));
@@ -58,6 +58,7 @@ namespace NetCoreLinfolk
             {
                 app.UseExceptionHandler("/error");
             }
+            app.UseAuthentication();
             app.UseMvc( cfg => {
                 cfg.MapRoute("Default", "/{controller}/{action}/{id?}", new { controller = "App", action = "Index" });
             });
@@ -67,7 +68,7 @@ namespace NetCoreLinfolk
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var seeder = scope.ServiceProvider.GetService<LinfolkSeeder>();
-                    //seeder.Seed();
+                    //seeder.Seed().Wait();
                 }
             }
         }
