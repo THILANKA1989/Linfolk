@@ -25,57 +25,36 @@ namespace NetCoreLinfolk.Data.LinfolkContext
 
         public async Task Seed()
         {
-            _ctx.Database.EnsureCreated();
-
-            if (!_ctx.Countries.Any())
+            try
             {
-                var country = new Country()
+                _ctx.Database.EnsureCreated();
+
+                var user = await _userManager.FindByEmailAsync("thilankaranasinghe1989@gmail.com");
+                if (user == null)
                 {
-                    CountryName = "Sri Lanka",
-                    IsEnabled = true
-                };
 
-                _ctx.Countries.Add(country);
-                _ctx.SaveChanges();
-            }
+                    user = new Author()
+                    {
+                        FirstName = "Thilanka",
+                        LastName = "Ranasinghe",
+                        UserName = "thilanka1989",
+                        CityId = 1,
+                        Email = "thilankaranasinghe1989@gmail.com"
+                    };
 
-            if (!_ctx.Cities.Any())
-            {
-                var countryId = _ctx.Countries.FirstOrDefault().Id;
-                var cities = new City()
-                {
-                    CityName = "Colombo",
-                    CountryId = countryId,
-                    IsEnabled = true
-                };
-
-                _ctx.Cities.Add(cities);
-                _ctx.SaveChanges();
-            }
-
-            _ctx.SaveChanges();
-
-            var user = await _userManager.FindByEmailAsync("thilankaranasinghe1989@gmail.com");
-            if(user == null)
-            {
-                var cityId = _ctx.Cities.FirstOrDefault().Id;
-                user = new Author()
-                {
-                    FirstName = "Thilanka",
-                    LastName = "Ranasinghe",
-                    UserName = "thilanka1989",
-                    CityId = cityId,
-                    Email = "thilankaranasinghe1989@gmail.com"
-                };
-
-                var result = await _userManager.CreateAsync(user, "Pathfinder1989");
-                if(result != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Failed to create default user");
+                    IdentityResult result = await _userManager.CreateAsync(user, "Pathfinder!(*(921");
+                    if (!result.Succeeded)
+                    {
+                        throw new Exception("No users were created");
+                    }
                 }
             }
-           
-            _ctx.SaveChanges();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
+
     }
 }

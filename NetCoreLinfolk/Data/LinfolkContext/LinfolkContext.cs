@@ -24,5 +24,24 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Country>().HasData(new Country()
+            {
+                Id = 1,
+                CountryName = "Sri Lanka",
+                IsEnabled = true
+            });
+
+            modelBuilder.Entity<City>().HasData(new City()
+            {
+                Id = 1,
+                CityName = "Colombo",
+                CountryId = 1,
+                IsEnabled = true
+            });
+        }
     }
 }

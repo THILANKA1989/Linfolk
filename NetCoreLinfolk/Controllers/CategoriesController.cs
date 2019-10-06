@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,7 +16,7 @@ using NetCoreLinfolk.ViewModels;
 namespace NetCoreLinfolk.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriesController : Controller
     {
         private readonly LinfolkContext _context;
@@ -50,6 +51,7 @@ namespace NetCoreLinfolk.Controllers
         {
             try
             {
+                var username = User.Identity.Name;
                 var category = _repository.GetCategoryById(id);
                 if (category != null) return Ok(_mapper.Map<Category,CategoryViewModel>(category));
                 else return NotFound();

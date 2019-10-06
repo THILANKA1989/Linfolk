@@ -15,7 +15,7 @@ namespace NetCoreLinfolk.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -313,6 +313,10 @@ namespace NetCoreLinfolk.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new { Id = 1, CityName = "Colombo", CountryId = 1, IsEnabled = true }
+                    );
                 });
 
             modelBuilder.Entity("NetCoreLinfolk.Data.Entities.Country", b =>
@@ -328,6 +332,10 @@ namespace NetCoreLinfolk.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new { Id = 1, CountryName = "Sri Lanka", IsEnabled = true }
+                    );
                 });
 
             modelBuilder.Entity("NetCoreLinfolk.Data.Entities.SubCategory", b =>

@@ -26,9 +26,9 @@ namespace NetCoreLinfolk.Data.LinfolkContext
 
         public IEnumerable<Book> GetAllBooks()
         {
-            return _ctx.Books.OrderByDescending(b=>b.ModifiedDate).ToList();
+            return _ctx.Books.OrderByDescending(b => b.ModifiedDate).ToList();
         }
-        
+
         public IEnumerable<Book> GetBooksByCategory(string category)
         {
             return _ctx.Books.Where(b => b.SubCategory.SubCategoryName.Contains(category)).ToList();
@@ -53,5 +53,23 @@ namespace NetCoreLinfolk.Data.LinfolkContext
         {
             _ctx.Add(model);
         }
+
+        public List<DropDown> GetCitiesDropdown()
+        {
+            List<DropDown> citiesList = new List<DropDown>();
+            foreach(var i in _ctx.Cities.ToList())
+            {
+                DropDown city = new DropDown();
+                city.Text = i.CityName;
+                city.Value = i.Id;
+                citiesList.Add(city);
+            }
+            return citiesList;
+        }
+    }
+
+    public class DropDown{
+        public int Value { get; set; }
+        public string Text { get; set; }
     }
 }

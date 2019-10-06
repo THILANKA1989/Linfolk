@@ -10,7 +10,6 @@ L:\Projects\NetCoreLinfolk\NetCoreLinfolk\bin\Debug\netcoreapp2.1\NetCoreLinfolk
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\bin\Debug\netcoreapp2.1\NetCoreLinfolk.pdb
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\bin\Debug\netcoreapp2.1\NetCoreLinfolk.Views.dll
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\bin\Debug\netcoreapp2.1\NetCoreLinfolk.Views.pdb
-L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\NetCoreLinfolk.csprojAssemblyReference.cache
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\NetCoreLinfolk.TagHelpers.input.cache
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\NetCoreLinfolk.TagHelpers.output.cache
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\NetCoreLinfolk.RazorCoreGenerate.cache
@@ -61,3 +60,6 @@ L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Su
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\SubCategories\Details.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\SubCategories\Edit.g.cshtml.cs
 L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\SubCategories\Index.g.cshtml.cs
+L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
+L:\Projects\NetCoreLinfolk\NetCoreLinfolk\obj\Debug\netcoreapp2.1\NetCoreLinfolk.csprojAssemblyReference.cache

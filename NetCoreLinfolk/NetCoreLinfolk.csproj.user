@@ -12,6 +12,7 @@
     <ActiveDebugProfile>NetCoreLinfolk</ActiveDebugProfile>
     <WebStackScaffolding_DbContextTypeFullName>NetCoreLinfolk.Data.LinfolkContext.LinfolkContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
